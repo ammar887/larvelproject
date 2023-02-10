@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\City;
+use App\Models\Area;
 
-class CityController extends Controller
+class AreaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +14,9 @@ class CityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $city = City::all();
-        return view('city', compact('city'));
+    {
+        $areas = Area::all();
+        return view('area', compact('areas'));
     }
 
     /**
@@ -24,9 +25,10 @@ class CityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        
-        return view('createcity');
+    {  
+        // $cities = City::orderBy('city_id', 'desc')->get('city_id');
+        $cities = City::all();
+        return view('createarea',compact('cities'));
     }
 
     /**
@@ -36,11 +38,12 @@ class CityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $city = new City;
-        $city->city_name = $request['city_name'];
-        $city->save();
-        return redirect(route('citys.index'));
+    {   
+        $area = new Area;
+        $area->area_name = $request['area_name'];
+        $area->city_id = $request['city_id'];
+        $area->save();
+        return redirect(route('areas.index'));
     }
 
     /**
@@ -51,7 +54,6 @@ class CityController extends Controller
      */
     public function show($id)
     {
-
     }
 
     /**
@@ -60,10 +62,11 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($city_id)
+    public function edit($area_id)
     {   
-        $city = City::find($city_id);
-        return view('updatecity',['city'=>$city]);
+        $cities = City::all();
+        $areas= Area::find($area_id);
+        return view('updatearea',['areas'=>$areas],compact('cities'));  
     }
 
     /**
@@ -73,12 +76,13 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $city_id)
+    public function update(Request $request, $area_id)
     {
-        $city= City::find($city_id);
-        $city->city_name=$request->city_name;
-        $city->save();
-        return redirect(route('citys.index'));
+        $area= Area::find($area_id);
+        $area->area_name=$request->area_name;
+        $area->city_id=$request->city_id;
+        $area->save();
+        return redirect(route('areas.index'));
 
     }
 
@@ -88,10 +92,10 @@ class CityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($city_id)
+    public function destroy($area_id)
     {
-        $city= City::find($city_id);
-        $city->delete();
-        return redirect(route('citys.index'));
+        $area= Area::find($area_id);
+        $area->delete();
+        return redirect(route('areas.index'));   
     }
 }

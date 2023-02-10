@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\AreaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('city');
+    return view('welcome');
 });
 
 
@@ -24,3 +25,5 @@ Route::get('/', function () {
 // });
 
 Route::resource('citys',CityController::class);
+
+Route::resource('areas',AreaController::class);
