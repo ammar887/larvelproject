@@ -14,8 +14,8 @@ class CityController extends Controller
      */
     public function index()
     {   
-        $city = City::all();
-        return view('city', compact('city'));
+        $cities = City::all();
+        return view('city', compact('cities'));
     }
 
     /**
@@ -38,7 +38,7 @@ class CityController extends Controller
     public function store(Request $request)
     {
         $city = new City;
-        $city->city_name = $request['city_name'];
+        $city->name = $request['city_name'];
         $city->save();
         return redirect(route('citys.index'));
     }

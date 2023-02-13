@@ -9,9 +9,9 @@ class Area extends Model
 {
     use HasFactory;
     protected $table="areas";
-    protected $primaryKey="area_id";
+    protected $primaryKey="id";
     
     public function city(){
-        return $this->belongsTo(City::class ,"city_id","city_id");
+        return $this->belongsTo(City::class ,"city_id","id");
     }
 }

@@ -12,24 +12,24 @@
 <body>
     <div class="container w-50 p-4">
         <h2 class="text-center">Update Area</h2>
-        <form action="{{url('areas',$areas->area_id)}}" method="post" enctype="multipart/form-data">
+        <form action="{{url('areas',$areas->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
         
             <div class="form-group">
                 <label for="inputCityId">Area Id</label>
-                <input type="text" name="area_id" value="{{old('area_id',$areas->area_id)}}" class="form-control" id="inputCityId" placeholder="City Id">
+                <input type="text" name="area_id" value="{{old('area_id',$areas->id)}}" class="form-control" id="inputCityId" placeholder="City Id">
             </div>
             <div class="form-group">
                 <label for="inputAreaName">Area Name</label>
-                <input type="text" name="area_name" value="{{old('area_id',$areas->area_name)}}" class="form-control" id="inputCityName" placeholder="Enter City Name">
+                <input type="text" name="area_name" value="{{old('area_id',$areas->name)}}" class="form-control" id="inputCityName" placeholder="Enter City Name">
             </div>
             <div class="form-group">
                 <label for="CityName">Select City</label>
                 <select class="form-control" id="CityName" name="city_id" >
                     <option>Select City</option>
                     @foreach($cities as $city )
-                    <option value="{{$city->city_id}}">{{$city->city_name}}</option>
+                    <option value="{{$city->id}}">{{$city->name}}</option>
                     @endforeach
                 </select>
             </div>

@@ -24,13 +24,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($areas as $data )
+                @foreach($areas as $area )
                 <tr>
-                    <th scope="row">{{$data->area_id}}</th>
-                    <td>{{$data->area_name}}</td>
-                    <td>{{$data->city->city_name}}</td>
-                    <td class="d-flex"><a href="{{url('areas/'.$data->area_id.'/edit')}}" class="btn btn-primary btn-sm px-3">Edit</a>
-                        <form class="ml-1" action="{{ route('areas.destroy',  $data->area_id) }}" method="POST">
+                    <th scope="row">{{$area->id}}</th>
+                    <td>{{$area->name}}</td>
+                    <td>{{$area->city->name}}</td>
+                    <td class="d-flex"><a href="{{url('areas/'.$area->id.'/edit')}}" class="btn btn-primary btn-sm px-3">Edit</a>
+                        <form class="ml-1" action="{{ route('areas.destroy',  $area->id) }}" method="POST">
                             @csrf
 
                             @method('DELETE')
