@@ -17,7 +17,6 @@ class AreaController extends Controller
     {
     
         $areas = Area::with('city')->get();
-        // dd($areas);
         return view('area', compact('areas'));
 
     }

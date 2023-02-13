@@ -16,8 +16,12 @@ return new class extends Migration
         Schema::create('schools', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('city_id')->constrained();
-            $table->foreignId('area_id')->constrained();
+            $table->foreignId('city_id')->constrained()  
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreignId('area_id')->constrained()  
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

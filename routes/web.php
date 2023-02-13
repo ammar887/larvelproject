@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\SchoolController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,5 @@ Route::get('/', function () {
 Route::resource('citys',CityController::class);
 
 Route::resource('areas',AreaController::class);
+
+Route::resource('schools',schoolController::class);
