@@ -18,7 +18,7 @@
 
             <div class="form-group">
                 <label for="inputSchoolId">School Id</label>
-                <input type="text" name="school_id" value="{{old('school_id',$school->id)}}" class="form-control" id="inputSchoolId" placeholder="School Id">
+                <input type="text" name="school_id" value="{{old('school_id',$school->id)}}" class="form-control" id="inputSchoolId" placeholder="School Id"  disabled>
             </div>
             <div class="form-group">
                 <label for="inputSchoolName">School Name</label>
@@ -27,22 +27,21 @@
             <div class="form-group">
                 <label for="CityName">Select City</label>
                 <select class="form-control" id="CityName" name="city_id">
-                    <option>Select City</option>
-                    @foreach($cities as $city )
-                    <option value="{{$city->id}}">{{$city->name}}</option>
+                    @foreach($cities as $city)
+                        <option value="{{$city->id}}" @if($school->city_id == $city->id) selected @endif>{{$city->name}}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <label for="AreaName">Select Area</label>
                 <select class="form-control" id="AreaName" name="area_id">
-                    <option>Select Area</option>
                     @foreach($areas as $area )
-                    <option value="{{$area->id}}">{{$area->name}}</option>
+                    <option value="{{$area->id}}" @if($school->area_id == $area->id) selected @endif>{{$area->name}}</option>
                     @endforeach
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Update School</button>
+            <a class="btn btn-danger" href="{{url('schools')}}">Back</a>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

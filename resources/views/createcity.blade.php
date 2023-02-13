@@ -16,9 +16,10 @@
         @csrf
             <div class="form-group">
                 <label for="inputCityName">City</label>
-                <input type="text" name="city_name" class="form-control" id="inputCityName" aria-describedby="emailHelp" placeholder="Enter City Name">
+                <input type="text" name="city_name" class="form-control" id="inputCityName"   placeholder="Enter City Name" >
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
+            <a class="btn btn-danger" href="{{url('citys')}}">Back</a>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

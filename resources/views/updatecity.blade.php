@@ -12,19 +12,21 @@
 <body>
     <div class="container w-50 p-4">
         <h2 class="text-center">Update City</h2>
-        <form action="{{url('citys',$city->city_id)}}" method="post" enctype="multipart/form-data">
+        <form action="{{url('citys',$city->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
         
             <div class="form-group">
                 <label for="inputCityId">City Id</label>
-                <input type="text" name="city_id" value="{{old('city_id',$city->id)}}" class="form-control" id="inputCityId" placeholder="City Id">
+                <input type="text" name="city_id" value="{{old('city_id',$city->id)}}" class="form-control" id="inputCityId" placeholder="City Id"  disabled>
             </div>
             <div class="form-group">
                 <label for="inputCityName">City Name</label>
                 <input type="text" name="city_name" value="{{old('city_id',$city->name)}}" class="form-control" id="inputCityName" placeholder="Enter City Name">
             </div>
             <button type="submit" class="btn btn-primary">Update City</button>
+            <a class="btn btn-danger" href="{{url('citys')}}">Back</a>
+            
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

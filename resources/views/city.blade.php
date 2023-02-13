@@ -10,10 +10,26 @@
 </head>
 
 <body>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">MySchool</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('areas')}}">Areas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('schools')}}">Schools</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
 
     <div class="container w-50 p-4">
+        <h2 class="text-center">City Details</h2>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -28,13 +44,14 @@
                     <th scope="row">{{$city->id}}</th>
                     <td>{{$city->name}}</td>
                     <td class="d-flex"><a href="{{url('citys/'.$city->id.'/edit')}}" class="btn btn-primary btn-sm px-3">Edit</a>
-                        <form  class="ml-1" action="{{ route('citys.destroy',  $city->id) }}" method="POST">
+                        <form class="ml-1" action="{{ route('citys.destroy',  $city->id) }}" method="POST">
                             @csrf
 
                             @method('DELETE')
 
-                            <button type="submit" class="btn btn-danger btn-block">Delete</button><td></td>
-                        </form>
+                            <button type="submit" class="btn btn-danger btn-block">Delete</button>
+                    <td></td>
+                    </form>
 
                     </td>
 
@@ -42,7 +59,7 @@
                 </tr>
                 @endforeach
             </tbody>
-            
+
         </table>
         <a href="{{url('citys/create')}}" class="btn btn-primary">Create</a>
     </div>

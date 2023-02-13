@@ -18,7 +18,7 @@
         
             <div class="form-group">
                 <label for="inputCityId">Area Id</label>
-                <input type="text" name="area_id" value="{{old('area_id',$areas->id)}}" class="form-control" id="inputCityId" placeholder="City Id">
+                <input type="text" name="area_id" value="{{old('area_id',$areas->id)}}" class="form-control" id="inputCityId" placeholder="City Id"  disabled>
             </div>
             <div class="form-group">
                 <label for="inputAreaName">Area Name</label>
@@ -27,13 +27,13 @@
             <div class="form-group">
                 <label for="CityName">Select City</label>
                 <select class="form-control" id="CityName" name="city_id" >
-                    <option>Select City</option>
                     @foreach($cities as $city )
-                    <option value="{{$city->id}}">{{$city->name}}</option>
+                    <option value="{{$city->id}}" @if($areas->city_id == $city->id) selected @endif>{{$city->name}}</option>
                     @endforeach
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Update Area</button>
+            <a class="btn btn-danger" href="{{url('areas')}}">Back</a>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

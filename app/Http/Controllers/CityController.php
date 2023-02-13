@@ -76,7 +76,7 @@ class CityController extends Controller
     public function update(Request $request, $city_id)
     {
         $city= City::find($city_id);
-        $city->city_name=$request->city_name;
+        $city->name=$request->city_name;
         $city->save();
         return redirect(route('citys.index'));
 
