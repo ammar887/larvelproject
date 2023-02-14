@@ -13,7 +13,7 @@ class CityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $cities = City::all();
         return view('city', compact('cities'));
     }
@@ -25,7 +25,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        
+
         return view('createcity');
     }
 
@@ -37,8 +37,14 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        $validatedata = $request->validate(
+            [
+            'city' => 'required',
+            ]
+        );
         $city = new City;
-        $city->name = $request['city_name'];
+        $city->name = $request['city'];
         $city->save();
         return redirect(route('citys.index'));
     }
@@ -51,7 +57,6 @@ class CityController extends Controller
      */
     public function show($id)
     {
-
     }
 
     /**
@@ -61,9 +66,9 @@ class CityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($city_id)
-    {   
+    {
         $city = City::find($city_id);
-        return view('updatecity',['city'=>$city]);
+        return view('updatecity', ['city' => $city]);
     }
 
     /**
@@ -75,11 +80,17 @@ class CityController extends Controller
      */
     public function update(Request $request, $city_id)
     {
-        $city= City::find($city_id);
-        $city->name=$request->city_name;
-        $city->save();
-        return redirect(route('citys.index'));
+        $validatedata = $request->validate(
+            [
+                'city' => 'required'
+            ]
+        );
 
+        $city = City::find($city_id);
+        $city->name = $request->city;
+        $city->save();
+
+        return redirect(route('citys.index'));
     }
 
     /**
@@ -90,7 +101,7 @@ class CityController extends Controller
      */
     public function destroy($city_id)
     {
-        $city= City::find($city_id);
+        $city = City::find($city_id);
         $city->delete();
         return redirect(route('citys.index'));
     }

@@ -39,9 +39,13 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $sr =1;
+                @endphp
                 @foreach($cities as $city )
                 <tr>
-                    <th scope="row">{{$city->id}}</th>
+                    <th scope="row">{{$sr}}</th>
+                    @php($sr++)
                     <td>{{$city->name}}</td>
                     <td class="d-flex"><a href="{{url('citys/'.$city->id.'/edit')}}" class="btn btn-primary btn-sm px-3">Edit</a>
                         <form class="ml-1" action="{{ route('citys.destroy',  $city->id) }}" method="POST">
@@ -61,7 +65,7 @@
             </tbody>
 
         </table>
-        <a href="{{url('citys/create')}}" class="btn btn-primary">Create</a>
+        <a href="{{url('citys/create')}}" class="btn btn-primary">Add City</a>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -16,7 +16,12 @@
         @csrf
             <div class="form-group">
                 <label for="inputCityName">City</label>
-                <input type="text" name="city_name" class="form-control" id="inputCityName"   placeholder="Enter City Name" >
+                <input type="text" name="city" class="form-control" id="inputCityName"   placeholder="Enter City Name" >
+                <span class="text-danger">
+                    @error('city')
+                        {{$message}}
+                    @enderror                                           
+                </span>
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
             <a class="btn btn-danger" href="{{url('citys')}}">Back</a>

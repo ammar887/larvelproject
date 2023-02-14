@@ -16,13 +16,15 @@
         @csrf
         @method('put')
         
+            
             <div class="form-group">
-                <label for="inputCityId">City Id</label>
-                <input type="text" name="city_id" value="{{old('city_id',$city->id)}}" class="form-control" id="inputCityId" placeholder="City Id"  disabled>
-            </div>
-            <div class="form-group">
-                <label for="inputCityName">City Name</label>
-                <input type="text" name="city_name" value="{{old('city_id',$city->name)}}" class="form-control" id="inputCityName" placeholder="Enter City Name">
+                <label for="inputCityName">City</label>
+                <input type="text" name="city" value="{{old('city_id',$city->name)}}" class="form-control" id="inputCityName" placeholder="Enter City Name">
+                <span class="text-danger">
+                    @error('city')
+                        {{$message}}
+                    @enderror                                           
+                </span>
             </div>
             <button type="submit" class="btn btn-primary">Update City</button>
             <a class="btn btn-danger" href="{{url('citys')}}">Back</a>

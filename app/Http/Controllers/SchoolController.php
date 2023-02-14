@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use  App\Models\City;
 use App\Models\Area;
 use App\Models\School;
@@ -15,14 +16,14 @@ class SchoolController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         // $schools = School::join('cities' ,'cities.id', '=' ,'schools.city_id' )
         // ->join('areas','areas.id','=','schools.area_id')->get(['schools.id','schools.name','areas.name']);
 
 
-        $schools = School::with(['area','city'])
-        ->get();
-        return view('school',compact('schools'));
+        $schools = School::with(['area', 'city'])
+            ->get();
+        return view('school', compact('schools'));
     }
 
     /**
@@ -31,9 +32,10 @@ class SchoolController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   $cities= City::all();
-        $areas= Area::all();
-        return view('createschool',compact('cities','areas'));
+    {
+        $cities = City::all();
+        $areas = Area::all();
+        return view('createschool', compact('cities', 'areas'));
     }
 
     /**
@@ -44,12 +46,18 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData = $request->validate([
+            'school' => 'required',
+            'city' => 'required',
+            'area' => 'required',
+        ]);
+
         $school = new School;
-        $school->name= $request['school_name'];
-        $school->city_id= $request['city_id'];
-        $school->area_id= $request['area_id'];
+        $school->name = $request['school'];
+        $school->city_id = $request['city'];
+        $school->area_id = $request['area'];
         $school->save();
-       return redirect(route('schools.index'));
+        return redirect(route('schools.index'));
     }
 
     /**
@@ -71,11 +79,10 @@ class SchoolController extends Controller
      */
     public function edit($school_id)
     {
-        $schools= School::find($school_id);
+        $schools = School::find($school_id);
         $cities = City::all();
-        $areas= Area::all();
-        return view('updateschool',['school'=>$schools],compact('cities','areas'));
-
+        $areas = Area::all();
+        return view('updateschool', ['school' => $schools], compact('cities', 'areas'));
     }
 
     /**
@@ -87,10 +94,16 @@ class SchoolController extends Controller
      */
     public function update(Request $request, $school_id)
     {
-        $school= school::find($school_id);
-        $school->name=$request->school_name;
-        $school->city_id=$request->city_id;
-        $school->area_id=$request->area_id;
+        $validateData = $request->validate([
+            'school' => 'required',
+            'city' => 'required',
+            'area' => 'required',
+        ]);
+        
+        $school = school::find($school_id);
+        $school->name = $request->school;
+        $school->city_id = $request->city;
+        $school->area_id = $request->area;
         $school->save();
         return redirect(route('schools.index'));
     }
@@ -103,7 +116,7 @@ class SchoolController extends Controller
      */
     public function destroy($school_id)
     {
-        $school= School::find($school_id);
+        $school = School::find($school_id);
         $school->delete();
         return redirect(route('schools.index'));
     }

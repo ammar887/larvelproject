@@ -41,9 +41,14 @@ class AreaController extends Controller
      */
     public function store(Request $request)
     {   
+
+        $validateData= $request->validate([
+            'area'=>'required',
+            'city' => 'required',
+        ]);
         $area = new Area;
-        $area->name = $request['area_name'];
-        $area->city_id = $request['city_id'];
+        $area->name = $request['area'];
+        $area->city_id = $request['city'];
         $area->save();
         return redirect(route('areas.index'));
     }
@@ -79,10 +84,14 @@ class AreaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $area_id)
-    {
+    {   
+        $validateData = $request->validate([
+            'area'=>'required',
+            'city' =>'required'
+        ]);
         $area= Area::find($area_id);
-        $area->name=$request->area_name;
-        $area->city_id=$request->city_id;
+        $area->name=$request->area;
+        $area->city_id=$request->city;
         $area->save();
         return redirect(route('areas.index'));
 

@@ -40,9 +40,13 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                $sr =1;
+                @endphp
                 @foreach($areas as $area )
                 <tr>
-                    <th scope="row">{{$area->id}}</th>
+                    <th scope="row">{{$sr}}</th>
+                    @php($sr++)
                     <td>{{$area->name}}</td>
                     <td>{{$area->city->name}}</td>
                     <td class="d-flex"><a href="{{url('areas/'.$area->id.'/edit')}}" class="btn btn-primary btn-sm px-3">Edit</a>
