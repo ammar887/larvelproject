@@ -23,7 +23,7 @@ class SchoolController extends Controller
 
         $schools = School::with(['area', 'city'])
             ->get();
-        return view('school', compact('schools'));
+        return view('School/school', compact('schools'));
     }
 
     /**
@@ -35,7 +35,7 @@ class SchoolController extends Controller
     {
         $cities = City::all();
         $areas = Area::all();
-        return view('createschool', compact('cities', 'areas'));
+        return view('School/createschool', compact('cities', 'areas'));
     }
 
     /**
@@ -82,7 +82,7 @@ class SchoolController extends Controller
         $schools = School::find($school_id);
         $cities = City::all();
         $areas = Area::all();
-        return view('updateschool', ['school' => $schools], compact('cities', 'areas'));
+        return view('School/updateschool', ['school' => $schools], compact('cities', 'areas'));
     }
 
     /**

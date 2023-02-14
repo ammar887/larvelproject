@@ -17,7 +17,7 @@ class AreaController extends Controller
     {
     
         $areas = Area::with('city')->get();
-        return view('area', compact('areas'));
+        return view('Area/area', compact('areas'));
 
     }
 
@@ -30,7 +30,7 @@ class AreaController extends Controller
     {  
         // $cities = City::orderBy('city_id', 'desc')->get('city_id');
         $cities = City::all();
-        return view('createarea',compact('cities'));
+        return view('Area/createarea',compact('cities'));
     }
 
     /**
@@ -73,7 +73,7 @@ class AreaController extends Controller
     {   
         $cities = City::all();
         $areas= Area::find($area_id);
-        return view('updatearea',['areas'=>$areas],compact('cities'));  
+        return view('Area/updatearea',['areas'=>$areas],compact('cities'));  
     }
 
     /**

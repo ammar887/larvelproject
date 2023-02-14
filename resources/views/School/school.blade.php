@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">MySchool</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,17 +32,21 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col" >School id</th>
-                    <th scope="col" >School Name</th>
-                    <th scope="col" >Area Name</th>
-                    <th scope="col" >City Name</th>
+                    <th scope="col">School id</th>
+                    <th scope="col">School Name</th>
+                    <th scope="col">Area Name</th>
+                    <th scope="col">City Name</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
+                @php
+                    $sr =1;
+                @endphp
                 @foreach($schools as $school )
                 <tr>
-                    <th scope="row">{{$school->id}}</th>
+                    <th scope="row">{{$sr}}</th>
+                    @php($sr++)
                     <td>{{$school->name}}</td>
                     <td>{{$school->area->name}}</td>
                     <td>{{$school->city->name}}</td>
