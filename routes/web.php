@@ -29,4 +29,6 @@ Route::resource('citys',CityController::class);
 
 Route::resource('areas',AreaController::class);
 
-Route::resource('schools',schoolController::class);
+Route::resource('schools',SchoolController::class);
+
+Route::get('/get_area', [SchoolController::class,'getArea'])->name('get_area');

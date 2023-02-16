@@ -28,7 +28,6 @@ class AreaController extends Controller
      */
     public function create()
     {  
-        // $cities = City::orderBy('city_id', 'desc')->get('city_id');
         $cities = City::all();
         return view('Area/createarea',compact('cities'));
     }
@@ -43,7 +42,7 @@ class AreaController extends Controller
     {   
 
         $validateData= $request->validate([
-            'area'=>'required',
+            'area'=>'required|regex:/^[a-zA-Z\s]*$/|unique:areas,name',
             'city' => 'required',
         ]);
         $area = new Area;
@@ -53,16 +52,7 @@ class AreaController extends Controller
         return redirect(route('areas.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -86,7 +76,7 @@ class AreaController extends Controller
     public function update(Request $request, $area_id)
     {   
         $validateData = $request->validate([
-            'area'=>'required',
+            'area'=>'required|regex:/^[a-zA-Z\s]*$/',
             'city' =>'required'
         ]);
         $area= Area::find($area_id);

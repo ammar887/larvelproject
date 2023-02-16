@@ -31,7 +31,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Create</button>
-            <a class="btn btn-danger" href="{{url('areas')}}">Back</a>
+            <a class="btn btn-danger" href="{{route('areas.index')}}">Back</a>
         </form>
     </div>
 @endsection

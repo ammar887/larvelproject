@@ -21,7 +21,7 @@
                 </span>
             </div>
             <button type="submit" class="btn btn-primary">Update City</button>
-            <a class="btn btn-danger" href="{{url('citys')}}">Back</a>
+            <a class="btn btn-danger" href="{{route('citys.index')}}">Back</a>
             
         </form>
     </div>

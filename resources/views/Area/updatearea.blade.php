@@ -32,7 +32,7 @@
                 </span>
             </div>
             <button type="submit" class="btn btn-primary">Update Area</button>
-            <a class="btn btn-danger" href="{{url('areas')}}">Back</a>
+            <a class="btn btn-danger" href="{{route('areas.index')}}">Back</a>
         </form>
     </div>
 @endsection

@@ -4,7 +4,7 @@
 @section('title','City')
 
 @section('main-content')
-@include('layout.navbar') 
+
 <div class="container w-50 p-4">
     <h2 class="text-center">City Details</h2>
     <table class="table table-bordered">
@@ -24,7 +24,7 @@
                 <th scope="row">{{$sr}}</th>
                 @php($sr++)
                 <td>{{$city->name}}</td>
-                <td class="d-flex"><a href="{{url('citys/'.$city->id.'/edit')}}" class="btn btn-primary btn-sm px-3">Edit</a>
+                <td class="d-flex"><a href="{{route('citys.edit',$city->id)}}" class="btn btn-primary btn-sm px-3">Edit</a>
                     <form class="ml-1" action="{{ route('citys.destroy',  $city->id) }}" method="POST">
                         @csrf
 
@@ -42,7 +42,7 @@
         </tbody>
 
     </table>
-    <a href="{{url('citys/create')}}" class="btn btn-primary">Add City</a>
+    <a href="{{route('citys.create')}}" class="btn btn-primary">Add City</a>
 </div>
 
 @stop

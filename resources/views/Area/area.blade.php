@@ -3,7 +3,6 @@
 
 @section('main-content')
 
-@include('layout.navbar') 
 <div class="container w-50 p-4">
     <h2 class="text-center">Area Details</h2>
     <table class="table table-bordered">
@@ -25,7 +24,7 @@
                 @php($sr++)
                 <td>{{$area->name}}</td>
                 <td>{{$area->city->name}}</td>
-                <td class="d-flex"><a href="{{url('areas/'.$area->id.'/edit')}}" class="btn btn-primary btn-sm px-3">Edit</a>
+                <td class="d-flex"><a href="{{route('areas.edit',$area->id)}}" class="btn btn-primary btn-sm px-3">Edit</a>
                     <form class="ml-1" action="{{ route('areas.destroy',  $area->id) }}" method="POST">
                         @csrf
 
@@ -40,7 +39,7 @@
         </tbody>
 
     </table>
-    <a href="{{url('areas/create')}}" class="btn btn-primary">Create</a>
+    <a href="{{route('areas.create')}}" class="btn btn-primary">Create</a>
 </div>
 
 @endsection

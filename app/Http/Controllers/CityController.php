@@ -26,7 +26,7 @@ class CityController extends Controller
     public function create()
     {
 
-        return view('City/createcity');
+        return view('City/create_city');
     }
 
     /**
@@ -40,7 +40,7 @@ class CityController extends Controller
         // dd($request->all());
         $validatedata = $request->validate(
             [
-            'city' => 'required',
+                'city' => 'required|regex:/^[a-zA-Z\s]*$/|unique:cities,name',
             ]
         );
         $city = new City;
@@ -49,15 +49,6 @@ class CityController extends Controller
         return redirect(route('citys.index'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -68,7 +59,7 @@ class CityController extends Controller
     public function edit($city_id)
     {
         $city = City::find($city_id);
-        return view('City/updatecity', ['city' => $city]);
+        return view('City/update_city', ['city' => $city]);
     }
 
     /**
@@ -82,7 +73,7 @@ class CityController extends Controller
     {
         $validatedata = $request->validate(
             [
-                'city' => 'required'
+                'city' => 'required|regex:/^[a-zA-Z\s]*$/'
             ]
         );
 

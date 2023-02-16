@@ -17,15 +17,16 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        // $schools = School::join('cities' ,'cities.id', '=' ,'schools.city_id' )
-        // ->join('areas','areas.id','=','schools.area_id')->get(['schools.id','schools.name','areas.name']);
-
-
-        $schools = School::with(['area', 'city'])
-            ->get();
+        $schools = School::with(['area', 'city'])->get();
         return view('School/school', compact('schools'));
     }
 
+    public function getArea(Request $request){
+        
+        $city_id=$request->city_id;
+        $area_data=Area::where('city_id',$city_id)->get();
+        return response()->json($area_data);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -38,6 +39,8 @@ class SchoolController extends Controller
         return view('School/createschool', compact('cities', 'areas'));
     }
 
+    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -47,7 +50,7 @@ class SchoolController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'school' => 'required',
+            'school' => 'required|regex:/^[a-zA-Z\s]*$/|unique:schools,name',
             'city' => 'required',
             'area' => 'required',
         ]);
@@ -58,17 +61,6 @@ class SchoolController extends Controller
         $school->area_id = $request['area'];
         $school->save();
         return redirect(route('schools.index'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -95,15 +87,17 @@ class SchoolController extends Controller
     public function update(Request $request, $school_id)
     {
         $validateData = $request->validate([
-            'school' => 'required',
+            'school' => 'required|regex:/^[a-zA-Z\s]*$/',
             'city' => 'required',
             'area' => 'required',
         ]);
         
-        $school = school::find($school_id);
+        $school = School::find($school_id);
         $school->name = $request->school;
         $school->city_id = $request->city;
         $school->area_id = $request->area;
+        
+
         $school->save();
         return redirect(route('schools.index'));
     }
@@ -120,4 +114,5 @@ class SchoolController extends Controller
         $school->delete();
         return redirect(route('schools.index'));
     }
+
 }
