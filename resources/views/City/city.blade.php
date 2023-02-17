@@ -10,7 +10,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th scope="col">City ID</th>
+                <th scope="col">City Idddddddddddddasd</th>
                 <th scope="col">City Name</th>
                 <th scope="col">Actions</th>
             </tr>
