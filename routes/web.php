@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\CityController;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,15 +21,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('city',function(){
-//     return view('createcity');
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::resource('citys', CityController::class);
+    Route::resource('areas', AreaController::class);
+    Route::resource('schools', SchoolController::class);
+});
 
-Route::resource('citys',CityController::class);
+Route::resource('schools', SchoolController::class)->middleware('auth');
 
-Route::resource('areas',AreaController::class);
 
-Route::resource('schools',SchoolController::class);
-
-Route::get('/get_area', [SchoolController::class,'getArea'])->name('get_area');
+require __DIR__ . '/auth.php';

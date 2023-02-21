@@ -1,16 +1,11 @@
 
-@extends('layout.header')
-
-@section('title','City')
-
-@section('main-content')
-
+<x-app-layout :title="'Cities'">
 <div class="container w-50 p-4">
     <h2 class="text-center">City Details</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th scope="col">City Idddddddddddddasd</th>
+                <th scope="col">City Id</th>
                 <th scope="col">City Name</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -31,8 +26,9 @@
                         @method('DELETE')
 
                         <button type="submit" class="btn btn-danger btn-block">Delete</button>
-                <td></td>
-                </form>
+                    </form>
+                {{-- <td></td> --}}
+                
 
                 </td>
 
@@ -45,4 +41,5 @@
     <a href="{{route('citys.create')}}" class="btn btn-primary">Add City</a>
 </div>
 
-@stop
+{{-- @stop --}}
+</x-app-layout>

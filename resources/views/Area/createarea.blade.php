@@ -1,7 +1,4 @@
-@extends('layout.header')
-@section('title','Create Area')
-
-@section('main-content')
+<x-app-layout :title="'Create Area'">
     <div class="container w-50 p-4">
         <h2 class="text-center">Create Area</h2>
         <form action="{{url('areas')}}" method="post">
@@ -34,4 +31,4 @@
             <a class="btn btn-danger" href="{{route('areas.index')}}">Back</a>
         </form>
     </div>
-@endsection
+</x-app-layout>

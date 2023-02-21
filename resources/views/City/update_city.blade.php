@@ -1,8 +1,4 @@
-@extends('layout.header')
-
-@section('title','City')
-
-@section('main-content')
+<x-app-layout :title="'Update City'">
 <body>
     <div class="container w-50 p-4">
         <h2 class="text-center">Update City</h2>
@@ -25,4 +21,4 @@
             
         </form>
     </div>
-@endsection
+</x-app-layout>

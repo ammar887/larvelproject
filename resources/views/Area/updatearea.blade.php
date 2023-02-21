@@ -1,7 +1,4 @@
-@extends('layout.header')
-@section('title','Update Area')
-
-@section('main-content')
+<x-app-layout :title="'Update Area'">
     <div class="container w-50 p-4">
         <h2 class="text-center">Update Area</h2>
         <form action="{{url('areas',$areas->id)}}" method="post" enctype="multipart/form-data">
@@ -35,4 +32,4 @@
             <a class="btn btn-danger" href="{{route('areas.index')}}">Back</a>
         </form>
     </div>
-@endsection
+</x-app-layout >

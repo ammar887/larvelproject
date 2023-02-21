@@ -7,13 +7,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('citys')}}">City</a>
+                    <a class="nav-link" href="{{route('citys.index')}}">City</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('areas')}}">Areas</a>
+                    <a class="nav-link" href="{{route('areas.index')}}">Areas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('schools')}}">Schools</a>
+                    <a class="nav-link" href="{{route('schools.index')}}">Schools</a>
                 </li>
             </ul>
         </div>

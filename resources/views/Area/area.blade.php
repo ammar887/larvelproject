@@ -1,8 +1,4 @@
-@extends('layout.header')
-@section('title','Area')
-
-@section('main-content')
-
+<x-app-layout :title="'Area'">
 <div class="container w-50 p-4">
     <h2 class="text-center">Area Details</h2>
     <table class="table table-bordered">
@@ -31,7 +27,6 @@
                         @method('DELETE')
 
                         <button type="submit" class="btn btn-danger btn-block">Delete</button>
-                <td></td>
                 </form>
                 </td>
             </tr>
@@ -42,4 +37,4 @@
     <a href="{{route('areas.create')}}" class="btn btn-primary">Create</a>
 </div>
 
-@endsection
+</x-app-layout>

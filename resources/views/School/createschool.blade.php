@@ -1,7 +1,4 @@
-@extends('layout.header')
-@section('title', 'Create School')
-
-@section('main-content')
+<x-app-layout :title="'Create School'">
     <div class="container w-50 p-4">
         <h2 class="text-center">Create School</h2>
         <form action="{{ url('schools') }}" method="post">
@@ -73,4 +70,4 @@
             });
         });
     </script>
-@endsection
+</x-app-layout>

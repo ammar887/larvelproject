@@ -37,7 +37,6 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $validatedata = $request->validate(
             [
                 'city' => 'required|regex:/^[a-zA-Z\s]*$/|unique:cities,name',

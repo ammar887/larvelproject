@@ -1,7 +1,4 @@
-@extends('layout.header')
-@section('title', 'Update School')
-
-@section('main-content')
+<x-app-layout :title="'Update School'">
     <div class="container w-50 p-4">
         <h2 class="text-center">Update School</h2>
         <form action="{{ url('schools', $school->id) }}" method="post" enctype="multipart/form-data">
@@ -57,49 +54,14 @@
             displayArea(city_id ,data);
             
 
-            // $.ajax({
-            //     url: '/get_area',
-            //     type: 'get',
-            //     data: data,
-            //     success: function(response) {
-            //         if (response) {
-
-            //             $('#AreaName').empty();
-            //             $('#AreaName').append('<option hidden>Choose Area</option>');
-            //             $.each(response, function(key, area) {
-            //                 if (area.city_id == city_id)
-            //                     $('#AreaName').append('<option value="' + area.id +
-            //                         '" selected>' +
-            //                         area.name + '</option>');
-            //             });
-            //         } else {
-            //             $('#AreaName').empty();
-            //         }
-            //     }
-            // });
-
+            
             $('#CityName').change(function() {
                 var city_id = $(this).val();
                 var data = {
                     'city_id': city_id,
                 }
                 displayArea(city_id ,data);
-                // $.ajax({
-                //     url: '/get_area',
-                //     type: 'get',
-                //     data: data,
-                //     success: function(response) {
-                //         if (response) {
-                //             $('#AreaName').empty();
-                //             $.each(response, function(key, area) {
-                //                 $('#AreaName').append('<option value="' + area.id +
-                //                     '">' + area.name + '</option>');
-                //             });
-                //         } else {
-                //             $('#AreaName').empty();
-                //         }
-                //     }
-                // });
+        
             });
 
 
@@ -129,4 +91,4 @@
         });
     </script>
 
-@endsection
+<x-app-layout>
